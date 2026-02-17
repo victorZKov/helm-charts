@@ -1,0 +1,79 @@
+# QuantumAPI Helm Chart - Default Values
+# See https://docs.quantumapi.eu/en/on-premises/kubernetes/configuration for full reference
+
+global:
+  # Public domain for accessing the platform (required)
+  domain: ""
+  # Container image tag to deploy. Pin to a specific version for production.
+  imageTag: "latest"
+  # Image pull secrets (if using a private registry)
+  imagePullSecrets: []
+
+# --- Ingress ---
+ingress:
+  enabled: true
+  className: "nginx"
+  tls:
+    enabled: true
+    clusterIssuer: "letsencrypt-prod"
+  annotations: {}
+
+# --- Identity Server ---
+identity:
+  replicas: 2
+  image:
+    repository: ghcr.io/victorzkov/mislata-identity
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+    limits:
+      cpu: "1000m"
+      memory: "1Gi"
+
+# --- API Server ---
+api:
+  replicas: 2
+  image:
+    repository: ghcr.io/victorzkov/mislata-api
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+    limits:
+      cpu: "1000m"
+      memory: "1Gi"
+
+# --- Background Worker ---
+worker:
+  replicas: 1
+  image:
+    repository: ghcr.io/victorzkov/mislata-worker
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
+
+# --- PostgreSQL ---
+postgresql:
+  enabled: true
+  persistence:
+    size: "10Gi"
+    storageClass: ""
+
+# --- Redis ---
+redis:
+  enabled: true
+  persistence:
+    size: "1Gi"
+    storageClass: ""
+
+# --- Configuration ---
+config:
+  # Enable license validation calls. Set to false for air-gapped mode.
+  phoneHome: true
+  # Log level: Debug, Information, Warning, Error, Fatal
+  logLevel: "Information"

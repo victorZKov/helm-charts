@@ -1,0 +1,15 @@
+Thank you for installing QuantumAPI!
+
+Your deployment is now running in namespace: {{ .Release.Namespace }}
+
+To verify the installation:
+  kubectl -n {{ .Release.Namespace }} get pods
+
+{{ if .Values.global.domain -}}
+Access the platform at: https://{{ .Values.global.domain }}
+{{- else -}}
+WARNING: No domain configured. Set global.domain in your values.yaml.
+{{- end }}
+
+Documentation: https://docs.quantumapi.eu/en/on-premises/kubernetes
+Support: support@quantumapi.eu
