@@ -1,0 +1,30 @@
+apiVersion: v1
+entries:
+  mislata:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-02-17T15:20:42.9964727Z"
+    description: QuantumAPI on-premises platform — quantum-safe identity, encryption,
+      and key management
+    digest: c6ab839c8bb665e2b9e7f0f78d0f1a5ad126c55ce22a0d987b7c2ae350cd1a9c
+    home: https://quantumapi.eu
+    icon: https://quantumapi.eu/icon.png
+    keywords:
+    - quantumapi
+    - quantum-safe
+    - encryption
+    - identity
+    - iam
+    - pqc
+    maintainers:
+    - email: support@quantumapi.eu
+      name: QuantumAPI
+      url: https://quantumapi.eu
+    name: mislata
+    sources:
+    - https://github.com/victorZKov/helm-charts
+    type: application
+    urls:
+    - https://github.com/victorZKov/helm-charts/releases/download/mislata-0.1.1/mislata-0.1.1.tgz
+    version: 0.1.1
+generated: "2026-02-17T15:20:42.99647931Z"
